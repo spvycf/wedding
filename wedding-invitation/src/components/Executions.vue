@@ -32,7 +32,7 @@
         executions: data.executions,
         isProcessed: false,
         isFinished: false,
-        progressBarText: '-------------------------------------------------',
+        progressBarText: '---------------------------------------------',
         endExecution: {
           name:'请柬打开中...',
           time: '',
@@ -85,7 +85,9 @@
                 execution.visible = true
                 resolve()
               }
-          setTimeout(showCode, duration)
+          setTimeout(showCode, 2000)
+          //2s延迟
+
         })
       },
       // 显示进度条
