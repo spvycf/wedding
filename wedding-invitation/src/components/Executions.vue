@@ -4,8 +4,8 @@
     <p class="code" v-for="(execution, index) in executions" :key="index" v-show="execution.visible">
       <span class="addon">~</span>
       [<span class="time">{{ execution.time }}</span>]
-      <span class="task">{{ execution.name }}</span>
-      <span class="duration" v-if="execution.duration!==undefined">{{ execution.duration }} ms</span>
+      <span class="task white-space">{{ execution.name }}</span>
+      <span class="durationUnit" >{{ execution.duration }} {{ execution.unit }}</span>
     </p>
     <!--进度条-->
     <p class="code" v-show="isProcessed">
@@ -32,9 +32,9 @@
         executions: data.executions,
         isProcessed: false,
         isFinished: false,
-        progressBarText: '--------------------------',
+        progressBarText: '-------------------------------------------------',
         endExecution: {
-          name:'打开中...',
+          name:'请柬打开中...',
           time: '',
           visible: false
         }
@@ -81,7 +81,7 @@
               duration = customDuration ? customDuration : Math.random()*50+250,
               showCode = () => {
                 execution.time = now.toLocaleTimeString()
-                execution.duration = execution.duration !== undefined ? duration.toFixed(2) : undefined
+                execution.duration = execution.duration == 0 ? duration.toFixed(2) : execution.duration
                 execution.visible = true
                 resolve()
               }
@@ -128,6 +128,14 @@
     .duration{
       margin-left: 10px;
       color: #BF36B7;
+    }
+    .durationUnit{
+      margin-right: 10px;
+      float: right;
+      color: #BF36B7;
+    }
+    .white-space {
+      white-space:pre
     }
   }
 </style>
