@@ -6,7 +6,7 @@
         <a href="javascript:;" class="maximum"></a>
     </header>
     <!-- 日期 -->
-    <p class="code">Last login: <span>{{ startDate }}</span> on wedding❤invitation</p>
+    <p class="code"><span>{{ startDate }}</span> wedding❤invitation</p>
     <!--代码编辑区-->
     <pre>
       <code v-html="highlightedCode"></code>
@@ -55,7 +55,7 @@
       }
     },
     created() {
-      this.startDate = (new Date()).toLocaleString()
+      this.startDate = (new Date()).toLocaleString('chinese', { hour12: false })
       this.progressivelyTyping()
     },
     updated() {

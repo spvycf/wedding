@@ -2,20 +2,21 @@
   <div class="executions">
     <!--执行命令-->
     <p class="code" v-for="(execution, index) in executions" :key="index" v-show="execution.visible">
-      <span class="addon">~</span>
+      <span class="addon"></span>
       [<span class="time">{{ execution.time }}</span>]
+      <br/>
       <span class="task white-space">{{ execution.name }}</span>
       <span class="durationUnit" >{{ execution.duration }} {{ execution.unit }}</span>
     </p>
     <!--进度条-->
     <p class="code" v-show="isProcessed">
-      <span class="addon">~</span>
+      <span class="addon"></span>
       {{ progressBarText }}
       <span class="percentage">{{ percentage }}%</span>
     </p>
     <!--执行命令-->
     <p class="code" v-show="endExecution.visible">
-      <span class="addon">~</span>
+      <span class="addon"></span>
       [<span class="time">{{ endExecution.time }}</span>]
       <span class="task">{{ endExecution.name }}</span>
     </p>
@@ -32,7 +33,7 @@
         executions: data.executions,
         isProcessed: false,
         isFinished: false,
-        progressBarText: '---------------------------------------------',
+        progressBarText: '---------------------------------',
         endExecution: {
           name:'请柬打开中...',
           time: '',
@@ -64,28 +65,28 @@
           await this.progressivelyRun(execution)
         }
         // 执行完命令，开始显示进度条
-        await this.successProcessing(1000)
+        await this.successProcessing(2000)
         // 执行最后一条命令
         await this.progressivelyRun(this.endExecution)
           .then(() => {
             setTimeout(() => {
               this.isFinished = true
               this.$emit('onFinish')
-            }, 500)
+            }, 1500)
           })
       },
       // 执行一条命令
       progressivelyRun(execution, customDuration) {
         return new Promise((resolve) => {
           let now = new Date(),
-              duration = customDuration ? customDuration : Math.random()*50+250,
+              duration = customDuration ? customDuration : Math.random()*20+200,
               showCode = () => {
-                execution.time = now.toLocaleTimeString()
+                execution.time = now.toLocaleTimeString('chinese', { hour12: false })
                 execution.duration = execution.duration == 0 ? duration.toFixed(2) : execution.duration
                 execution.visible = true
                 resolve()
               }
-          setTimeout(showCode, 2000)
+          setTimeout(showCode, 1500)
           //2s延迟
 
         })

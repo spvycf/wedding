@@ -8,7 +8,7 @@
             <p>我们结婚啦！</p>
             <p><b>EnZoe & Zoe</b></p>
             <p>时间：2022-05-50</p>
-            <p>地点：<b>黄桥凯悦大酒店</b></p>
+            <p>地点：<b>江苏泰兴·黄桥凯悦大酒店</b></p>
             <div class="content-inside-bless">
               <input
                 placeholder="写下你的祝福" 
@@ -23,6 +23,11 @@
                 <button @click="sendBarrage">发送祝福弹幕</button>
                 <button @click="closeInvitation">关闭</button>
               </div>
+            </div>
+            <div class="content-inside">
+              <p>长按并松开以识别我们的专属婚礼小程序</p>
+              <p>登记来宾您的信息</p>
+              <img src="https://st-testing.oss-cn-hangzhou.aliyuncs.com/upload/wordClassImage/ma.jpg">
             </div>
           </div>
         </div>
